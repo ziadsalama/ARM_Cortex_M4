@@ -74,34 +74,42 @@ void GPIO_voidInitInputPin(u8 Copy_u8PortID,u8 Copy_u8PinID, u8 Copy_u8PullMode)
 	case GPIO_PORTA:
 		/*Set Direction of The Pin to be input Pin by Bit Masking */
 		GPIOA->GPIO_MODER&=~(0b11<<(Copy_u8PinID*2));
-		GPIOA->GPIO_MODER|=(0b00<<(Copy_u8PinID*2));
+		//GPIOA->GPIO_MODER|=(0b00<<(Copy_u8PinID*2));
 
 		/*Set the Mode of input pin */
-		//GPIOA->GPIO_PUPDR&=~(0b11<<(Copy_u8PinID*2));
-		//GPIOA->GPIO_PUPDR|=(Copy_u8PullMode<<(Copy_u8PinID*2));
+		GPIOA->GPIO_PUPDR&=~(0b11<<(Copy_u8PinID*2));
+		GPIOA->GPIO_PUPDR|=(Copy_u8PullMode<<(Copy_u8PinID*2));
 
 		/* Set Type of input Pin*/
-		WRITE_BIT(GPIOA->GPIO_PUPDR,Copy_u8PinID,Copy_u8PullMode);
+		//WRITE_BIT(GPIOA->GPIO_PUPDR,Copy_u8PinID,Copy_u8PullMode);
 
 		break;
 
 	case GPIO_PORTB:
 		/*Set Direction of The Pin to be input Pin by Bit Masking */
-		GPIOB->GPIO_MODER&=~(0b11<<(Copy_u8PinID*2));
-		GPIOB->GPIO_MODER|=(0b00<<(Copy_u8PinID*2));
+				GPIOB->GPIO_MODER&=~(0b11<<(Copy_u8PinID*2));
+				//GPIOB->GPIO_MODER|=(0b00<<(Copy_u8PinID*2));
 
-		/* Set Type of input Pin*/
-		WRITE_BIT(GPIOB->GPIO_PUPDR,Copy_u8PinID,Copy_u8PullMode);
+				/*Set the Mode of input pin */
+				GPIOB->GPIO_PUPDR&=~(0b11<<(Copy_u8PinID*2));
+				GPIOB->GPIO_PUPDR|=(Copy_u8PullMode<<(Copy_u8PinID*2));
+
+				/* Set Type of input Pin*/
+				//WRITE_BIT(GPIOA->GPIO_PUPDR,Copy_u8PinID,Copy_u8PullMode);
 
 		break;
 
 	case GPIO_PORTC:
 		/*Set Direction of The Pin to be input Pin by Bit Masking */
-		GPIOC->GPIO_MODER&=~(0b11<<(Copy_u8PinID*2));
-		GPIOC->GPIO_MODER|=(0b00<<(Copy_u8PinID*2));
+				GPIOC->GPIO_MODER&=~(0b11<<(Copy_u8PinID*2));
+				//GPIOC->GPIO_MODER|=(0b00<<(Copy_u8PinID*2));
 
-		/* Set Type of input Pin*/
-		WRITE_BIT(GPIOC->GPIO_PUPDR,Copy_u8PinID,Copy_u8PullMode);
+				/*Set the Mode of input pin */
+				GPIOC->GPIO_PUPDR&=~(0b11<<(Copy_u8PinID*2));
+				GPIOC->GPIO_PUPDR|=(Copy_u8PullMode<<(Copy_u8PinID*2));
+
+				/* Set Type of input Pin*/
+				//WRITE_BIT(GPIOA->GPIO_PUPDR,Copy_u8PinID,Copy_u8PullMode);
 
 		break;
 
