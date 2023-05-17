@@ -62,6 +62,13 @@ void GPIO_voidSetOutputPinValue(u8 Copy_u8PortID,u8 Copy_u8PinID, u8 Copy_u8Valu
 /* this function is to get the value of any input pin   */
 u8 GPIO_voidGetInputPinValue(u8 Copy_u8PortID,u8 Copy_u8PinID);
 
+void GPIO_voidSetOutputPinValueFast(u8 Copy_u8PortID,u8 Copy_u8PinID, u8 Copy_u8Value);
+
+void GPIO_voidInitOutputPort(u8 Copy_u8PortID, u8 Copy_u8PortType, u8 Copy_u8PortSpeed);
+
+void GPIO_voidSetOutputPortValue(u8 Copy_u8PortID, u16 Copy_u16PortValue);
+
+void GPIO_voidSetAlternativeFunction(u8 Copy_u8PortID,u8 Copy_u8PinID,u8 Copyu8AlternativeFunction);
 /******************************************************************************************/
 
 
