@@ -5,6 +5,9 @@
 #define RCC_PRIVATE_H_
 
 
+
+
+
 /* System Clock Configuration */
 #define  HSI                  1
 #define  HSE_RC               2
