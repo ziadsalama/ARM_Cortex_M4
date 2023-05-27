@@ -1,6 +1,4 @@
 
-
-
 #ifndef NVIC_PRIVATE_H_
 #define NVIC_PRIVATE_H_
 
@@ -34,4 +32,5 @@ typedef struct
 #define GROUP1_SUB3             (6)  /*Support 2 group and 8 subpriorities*/
 #define GROUP0_SUB4             (7)  /*Support 0 group and 16 subpriorities(no nesting )*/
 
+#define NVIC_EXTI1                 7
 #endif
