@@ -19,9 +19,9 @@ typedef struct
 
 #define SYSTICK                  ((SYSTICK_Reg_t*)(0xE000E010))
 
-#define STK_ENABLE                 0
-#define STK_TICKINT                 1
-#define STK_COUNTFLAG                  16
+#define STK_ENABLE                      0
+#define STK_TICKINT                     1
+#define STK_COUNTFLAG                   16
 
 #define SINGLE                     0
 #define PERIODIC                   1

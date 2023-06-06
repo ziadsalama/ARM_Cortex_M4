@@ -1,9 +1,3 @@
-/*
- * NVIC_program.c
- *
- *  Created on: May 4, 2023
- *      Author: ziad
- */
 
 
 #include "../../LIB/STD_LIB.h"
@@ -156,9 +150,10 @@ u32 SYSTICK_u32GetElapsedTime(void)
 
 
 /************************************** ISRs *************************************/
-/* Systick Handler */
-void Systick_Handler(void)
+/* SYSTICK Handler */
+void SysTick_Handler(void)
 {
+	u8 Local_u8ReadCountFlag;
 	switch(Global_u8AsyncRepition)
 	{
 
@@ -176,7 +171,8 @@ void Systick_Handler(void)
 		/* Call Application Function */
 			Global_PtrToFunc_SYSTICK();
 
-
+			/* Clear The Flag */
+			Local_u8ReadCountFlag = READ_BIT(SYSTICK->CTRL,STK_COUNTFLAG);
 		break;
 	}
 }
