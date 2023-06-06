@@ -1,8 +1,6 @@
 
-
 #ifndef STD_LIB_H_
 #define STD_LIB_H_
-
 
 
 typedef unsigned char             u8;
