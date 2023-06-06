@@ -393,24 +393,24 @@ void GPIO_voidSetOutputPortValue(u8 Copy_u8PortID, u16 Copy_u16PortValue)
 
 	case GPIO_PORTB:
 		if(Copy_u16PortValue<=Local_u16MAXValue)
-				{
-					GPIOB->GPIO_ODR = Copy_u16PortValue;
-				}
-				else
-				{
-					GPIOB->GPIO_ODR = Local_u16MAXValue;
-				}
+		{
+			GPIOB->GPIO_ODR = Copy_u16PortValue;
+		}
+		else
+		{
+			GPIOB->GPIO_ODR = Local_u16MAXValue;
+		}
 		break;
 
 	case GPIO_PORTC:
 		if(Copy_u16PortValue<=Local_u16MAXValue)
-				{
-					GPIOC->GPIO_ODR = Copy_u16PortValue;
-				}
-				else
-				{
-					GPIOC->GPIO_ODR = Local_u16MAXValue;
-				}
+		{
+			GPIOC->GPIO_ODR = Copy_u16PortValue;
+		}
+		else
+		{
+			GPIOC->GPIO_ODR = Local_u16MAXValue;
+		}
 		break;
 
 	}
@@ -421,28 +421,74 @@ void GPIO_voidSetOutputPortValue(u8 Copy_u8PortID, u16 Copy_u16PortValue)
 void GPIO_voidSetAlternativeFunction(u8 Copy_u8PortID,u8 Copy_u8PinID,u8 Copyu8AlternativeFunction)
 {
 	switch (Copy_u8PortID){
-		case GPIO_PORTA:
-			/*Set The MODE of Pin to be ALternative by Bit Masking */
-			GPIOA->GPIO_MODER &=~(3<<(Copy_u8PinID*2));
-			GPIOA->GPIO_MODER |=(0b10<<(Copy_u8PinID*2));
-			GPIOA->GPIO_AFRL &=~(0b1111 <<Copy_u8PinID*4);
+	case GPIO_PORTA:
+		/* Set Pin Mode to Be Alternative Function */
+		GPIOA->GPIO_MODER &=~(0b11<<(Copy_u8PinID*2));
+		GPIOA->GPIO_MODER |=(0b10<<(Copy_u8PinID*2));
+		/* Check for the First 8 Pins */
+		if(Copy_u8PinID>=0 && Copy_u8PinID<8)
+		{
+			/* Set Alternative Function value at ARFL*/
+			/* Bit Masking */
+			GPIOA->GPIO_AFRL &=~(0b1111 <<(Copy_u8PinID*4));
 			GPIOA->GPIO_AFRL|=(Copyu8AlternativeFunction <<Copy_u8PinID*4);
-			break;
-		case GPIO_PORTB:
-			/*Set The MODE of Pin to be ALternative by Bit Masking */
-			GPIOB->GPIO_MODER &=~(3<<(Copy_u8PinID*2));
-			GPIOB->GPIO_MODER |=(0b10<<(Copy_u8PinID*2));
-			GPIOB->GPIO_AFRL&=~(0b1111 <<Copy_u8PinID*4);
-			GPIOB->GPIO_AFRL|=(Copyu8AlternativeFunction <<Copy_u8PinID*4);
-			break;
-		case GPIO_PORTC:
-			/*Set The MODE of Pin to be ALternative by Bit Masking */
-			GPIOC->GPIO_MODER &=~(3<<(Copy_u8PinID*2));
-			GPIOC->GPIO_MODER |=(0b10<<(Copy_u8PinID*2));
-			GPIOC->GPIO_AFRL&=~(0b1111 <<Copy_u8PinID*4);
-			GPIOC->GPIO_AFRL|=(Copyu8AlternativeFunction <<Copy_u8PinID*4);
-			break;
 		}
+		else if(Copy_u8PinID>=8 && Copy_u8PinID<16)
+		{
+			/* Set Alternative Function value at ARFH*/
+			/* Bit Masking */
+			Copy_u8PinID -=8;
+			GPIOA->GPIO_AFRH &=~(0b1111 <<(Copy_u8PinID*4));
+			GPIOA->GPIO_AFRH|=(Copyu8AlternativeFunction <<Copy_u8PinID*4);
+
+		}
+
+		break;
+	case GPIO_PORTB:
+		/* Set Pin Mode to Be Alternative Function */
+		GPIOB->GPIO_MODER &=~(0b11<<(Copy_u8PinID*2));
+		GPIOB->GPIO_MODER |=(0b10<<(Copy_u8PinID*2));
+		/* Check for the First 8 Pins */
+		if(Copy_u8PinID>=0 && Copy_u8PinID<8)
+		{
+			/* Set Alternative Function value at ARFL*/
+			/* Bit Masking */
+			GPIOB->GPIO_AFRL &=~(0b1111 <<(Copy_u8PinID*4));
+			GPIOB->GPIO_AFRL|=(Copyu8AlternativeFunction <<Copy_u8PinID*4);
+		}
+		else if(Copy_u8PinID>=8 && Copy_u8PinID<16)
+		{
+			/* Set Alternative Function value at ARFH*/
+			/* Bit Masking */
+			Copy_u8PinID -=8;
+			GPIOB->GPIO_AFRH &=~(0b1111 <<(Copy_u8PinID*4));
+			GPIOB->GPIO_AFRH|=(Copyu8AlternativeFunction <<Copy_u8PinID*4);
+
+		}
+		break;
+	case GPIO_PORTC:
+		/* Set Pin Mode to Be Alternative Function */
+		GPIOC->GPIO_MODER &=~(0b11<<(Copy_u8PinID*2));
+		GPIOC->GPIO_MODER |=(0b10<<(Copy_u8PinID*2));
+		/* Check for the First 8 Pins */
+		if(Copy_u8PinID>=0 && Copy_u8PinID<8)
+		{
+			/* Set Alternative Function value at ARFL*/
+			/* Bit Masking */
+			GPIOC->GPIO_AFRL &=~(0b1111 <<(Copy_u8PinID*4));
+			GPIOC->GPIO_AFRL|=(Copyu8AlternativeFunction <<Copy_u8PinID*4);
+		}
+		else if(Copy_u8PinID>=8 && Copy_u8PinID<16)
+		{
+			/* Set Alternative Function value at ARFH*/
+			/* Bit Masking */
+			Copy_u8PinID -=8;
+			GPIOC->GPIO_AFRH &=~(0b1111 <<(Copy_u8PinID*4));
+			GPIOC->GPIO_AFRH|=(Copyu8AlternativeFunction <<Copy_u8PinID*4);
+
+		}
+		break;
+	}
 
 
 }

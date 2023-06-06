@@ -48,6 +48,27 @@
 /* Input Pin Pull Type */
 #define GPIO_INPUT_PULLUP       1
 #define GPIO_INPUT_PULLDOWN     2
+
+/*Alternative Function Moods*/
+#define GPIO_AF0               0b0000
+#define GPIO_AF1               0b0001
+#define GPIO_AF2               0b0010
+#define GPIO_AF3               0b0011
+#define GPIO_AF4               0b0100
+#define GPIO_AF5               0b0101
+#define GPIO_AF6               0b0110
+#define GPIO_AF7               0b0111
+#define GPIO_AF8               0b1000
+#define GPIO_AF9               0b1001
+#define GPIO_AF10              0b1010
+#define GPIO_AF11              0b1011
+#define GPIO_AF12              0b1100
+#define GPIO_AF13              0b1101
+#define GPIO_AF14              0b1110
+#define GPIO_AF15              0b1111
+
+
+
 /**************************** Function Prototypes ****************************************/
 /* this function is to set initialize any pin to be an output pin */
 void GPIO_voidInitOutputPin(u8 Copy_u8PortID,u8 Copy_u8PinID, u8 Copy_u8PinType
@@ -65,6 +86,7 @@ u8 GPIO_voidGetInputPinValue(u8 Copy_u8PortID,u8 Copy_u8PinID);
 void GPIO_voidSetOutputPinValueFast(u8 Copy_u8PortID,u8 Copy_u8PinID, u8 Copy_u8Value);
 
 void GPIO_voidInitOutputPort(u8 Copy_u8PortID, u8 Copy_u8PortType, u8 Copy_u8PortSpeed);
+
 
 void GPIO_voidSetOutputPortValue(u8 Copy_u8PortID, u16 Copy_u16PortValue);
 
